@@ -21,10 +21,10 @@ const params = { Bucket: process.env['bucket'], Key: process.env['object'] };
          
 const s3ObjectUrl = s3.getSignedUrl('getObject', params);
 console.log(s3ObjectUrl);
-
+const test = 'hello ma preety boi';
 // Route to get all books
 app.get('/api/s3image', (req, res) => {
-  res.json(s3ObjectUrl);
+  res.json(test);
 });
 
 // Start the server
