@@ -28,7 +28,7 @@ app.get('/api/s3image', (req, res) => {
 });
 
 // Start the server
-const PORT = 80;
+const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
