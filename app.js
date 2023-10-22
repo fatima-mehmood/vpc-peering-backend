@@ -11,20 +11,20 @@ const app = express();
 };
 app.use(cors())
 
-// AWS.config.update({
-//   region: 'us-east-1',
-//   accessKeyId: process.env['accessKeyId'],
-//   secretAccessKey: process.env['secretAccessKey'],
-// });
-// const s3 = new AWS.S3();
-// const params = { Bucket: process.env['bucket'], Key: process.env['object'] };
-         
-// const s3ObjectUrl = s3.getSignedUrl('getObject', params);
-// console.log(s3ObjectUrl);
-const test = 'hello ma preety boi';
+AWS.config.update({
+  region: 'us-east-1',
+  accessKeyId: process.env['accessKeyId'],
+  secretAccessKey: process.env['secretAccessKey'],
+});
+const s3 = new AWS.S3();
+const params = { Bucket: process.env['bucket'], Key: process.env['object'] };
+
+const s3ObjectUrl = s3.getSignedUrl('getObject', params);
+console.log(s3ObjectUrl);
+
 // Route to get all books
 app.get('/api/s3image', (req, res) => {
-  res.json(test);
+  res.json(s3ObjectUrl);
 });
 
 // Start the server
