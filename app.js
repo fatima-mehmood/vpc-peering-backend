@@ -17,7 +17,7 @@ AWS.config.update({
   secretAccessKey: process.env['secretAccessKey'],
 });
 const s3 = new AWS.S3();
-const params = { Bucket: process.env['bucket'], Key: 'image1' };
+const params = { Bucket: process.env['bucket'], Key: 'image1.png' };
 
 const s3ObjectUrl = s3.getSignedUrl('getObject', params);
 console.log(s3ObjectUrl);
