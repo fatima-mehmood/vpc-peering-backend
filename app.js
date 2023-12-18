@@ -1,8 +1,6 @@
 const express = require('express');
 const cors=require('cors');
-const AWS = require('aws-sdk');
 const app = express();
-
 
   const corsOptions = {
   origin: '*', //to allow forntend and backend on same computer
@@ -11,20 +9,17 @@ const app = express();
 };
 app.use(cors())
 
-AWS.config.update({
-  region: 'us-east-1',
-  accessKeyId: process.env['accessKeyId'],
-  secretAccessKey: process.env['secretAccessKey'],
-});
-const s3 = new AWS.S3();
-const params = { Bucket: process.env['bucket'], Key: 'image1.png', Expires: 3600 };
 
-const s3ObjectUrl = s3.getSignedUrl('getObject', params);
-console.log(s3ObjectUrl);
+// Sample data - a list of books
+let books = [
+  { id: 1, title: 'Book 1', author: 'Author 1' },
+  { id: 2, title: 'Book 2', author: 'Author 2' },
+  { id: 3, title: 'Book 3', author: 'Author 3' }
+];
 
 // Route to get all books
-app.get('/api/s3image', (req, res) => {
-  res.json(s3ObjectUrl);
+app.get('/api/books', (req, res) => {
+  res.json(books);
 });
 
 // Start the server
