@@ -9,17 +9,9 @@ const app = express();
 };
 app.use(cors())
 
-
-// Sample data - a list of books
-let books = [
-  { id: 1, title: 'Book 1', author: 'Author 1' },
-  { id: 2, title: 'Book 2', author: 'Author 2' },
-  { id: 3, title: 'Book 3', author: 'Author 3' }
-];
-
 // Route to get all books
-app.get('/api/books', (req, res) => {
-  res.json(books);
+app.get('/api', (req, res) => {
+  res.json("This is a message sent by backend server");
 });
 
 // Start the server
